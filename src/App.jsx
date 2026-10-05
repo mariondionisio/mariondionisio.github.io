@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 
 const profile = {
-  name: "Marion H. Dionisio",
+  name: "Marion Dionisio",
   title: "Computer Programmer",
   phones: ["+63 969 318 8682", "+63 926 041 5305"],
   emails: ["mariondionisio7@gmail.com", "mhdionisio@doh.gov.ph"],
@@ -89,7 +89,7 @@ function App() {
               <div className="profile-ring">
                 <img
                   src="/marion.jpg"
-                  alt="Marion H. Dionisio"
+                  alt="Marion Dionisio"
                   className="profile-photo"
                 />
               </div>
