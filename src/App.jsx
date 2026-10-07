@@ -32,7 +32,7 @@ const profile = {
   tiktok: "https://www.tiktok.com/@mariondionisio",
   messenger: "https://m.me/marion.dionisio20",
   linkedin: "https://www.linkedin.com/in/marion-dionisio-a42985114",
-  website: "https://mariondionisio.github.io/",
+  website: "https://mariondionisio.github.io/marion_portfolio/",
 };
 
 function downloadVCard() {
@@ -211,7 +211,7 @@ function App() {
                 <Globe size={20} />
                 <span>
                   <strong>Website</strong>
-                  <small>mariondionisio.github.io</small>
+                  <small>mariondionisio.github.io/marion_portfolio/</small>
                 </span>
               </a>
             </div>
