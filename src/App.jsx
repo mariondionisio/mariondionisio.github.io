@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Code2,
   Lightbulb,
@@ -68,6 +68,15 @@ function downloadVCard() {
 function App() {
   const [active, setActive] = useState("home");
   const [showContact, setShowContact] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setIsLoading(false);
+    }, 1800);
+
+    return () => window.clearTimeout(timer);
+  }, []);
 
   const goTo = (section) => {
     setActive(section);
@@ -76,10 +85,52 @@ function App() {
 
   return (
     <div className="app-shell">
+      {isLoading && (
+        <div
+          className="nfc-loader"
+          role="status"
+          aria-label="Loading digital business card"
+        >
+          <div className="loader-content">
+            <div className="nfc-animation">
+              <div className="nfc-ring nfc-ring-one" />
+              <div className="nfc-ring nfc-ring-two" />
+              <div className="nfc-ring nfc-ring-three" />
+
+              <div className="loader-photo">
+                <img src="/marion.jpg" alt="" />
+              </div>
+
+              <div className="nfc-dot" />
+            </div>
+
+            <h2>
+              MARION <span>DIONISIO</span>
+            </h2>
+            <p className="loader-role">COMPUTER PROGRAMMER</p>
+
+            <div className="loader-divider" />
+
+            <p className="loader-message">
+              Preparing your digital business card
+            </p>
+
+            <div className="loader-progress">
+              <div className="loader-progress-fill" />
+            </div>
+
+            <span className="loader-caption">BUILD · SOLVE · IMPROVE</span>
+          </div>
+        </div>
+      )}
       <div className="ambient ambient-one" />
       <div className="ambient ambient-two" />
 
-      <main className="phone-frame">
+      <main
+        className={`phone-frame ${
+          isLoading ? "card-loading" : "animations-ready"
+        }`}
+      >
         {active === "home" && (
           <section id="home" className="hero-section section-anchor">
             <div className="hero-decoration hero-decoration-left" />
@@ -225,7 +276,7 @@ function App() {
         )}
 
         {active === "about" && (
-          <section id="about" className="content-section section-anchor">
+          <section key={active} className="content-section section-enter">
             <div className="section-top">
               <button className="back-button" onClick={() => goTo("home")}>
                 ‹
@@ -277,7 +328,7 @@ function App() {
         )}
 
         {active === "save" && (
-          <section id="save" className="content-section section-anchor">
+          <section key={active} className="content-section section-enter">
             <div className="section-top">
               <button className="back-button" onClick={() => goTo("home")}>
                 ‹
@@ -310,7 +361,7 @@ function App() {
         )}
 
         {active === "contact" && (
-          <section id="contact" className="content-section section-anchor">
+          <section key={active} className="content-section section-enter">
             <div className="section-top">
               <button className="back-button" onClick={() => goTo("home")}>
                 ‹
